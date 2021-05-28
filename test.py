@@ -16,7 +16,13 @@ class DetectorTestCase(unittest.TestCase):
 
         for i in range(5):
             line_number = randint(0, len(x_test_lines))
+            text = x_test_lines[line_number]
+            detected_language = detector.detect_language(x_test_lines[line_number])[0]['language']
+            expected_language = y_test_lines[line_number].strip()
+
+            print(text, detected_language, expected_language)
+
             self.assertEqual(
-                detector.detect_language(x_test_lines[line_number]),
-                y_test_lines[line_number]
+                detected_language,
+                expected_language
             )

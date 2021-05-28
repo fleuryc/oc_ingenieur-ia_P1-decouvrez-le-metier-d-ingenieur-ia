@@ -4,7 +4,6 @@ import json
 import os
 import requests
 import uuid
-import argparse
 from dotenv import load_dotenv
 
 
