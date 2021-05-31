@@ -1,52 +1,28 @@
-# -*- coding: utf-8 -*-
-
-import json
-import os
 import requests
 import uuid
-from dotenv import load_dotenv
+import environs
+from marshmallow.validate import Length, OneOf, URL
 
 
-class Detector:
-    constructed_url: str
-    headers: dict
+env = environs.Env()
+env.read_env()
 
-    def __init__(self):
-        load_dotenv()  # take environment variables from .env.
+SUBSCRIPTION_KEY = env.str(
+    "TRANSLATOR_TEXT_SUBSCRIPTION_KEY", validate=[Length(equal=32)]
+)
+ENDPOINT = env.str("TRANSLATOR_TEXT_ENDPOINT", validate=[URL()])
+LOCATION = env.str("TRANSLATOR_TEXT_LOCATION", validate=[OneOf(["francecentral"])])
 
-        key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-        if key_var_name not in os.environ:
-            raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
-        subscription_key = os.environ[key_var_name]
 
-        endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
-        if endpoint_var_name not in os.environ:
-            raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
-        endpoint = os.environ[endpoint_var_name]
+def detect_language(text: str) -> str:
+    headers = {
+        "Ocp-Apim-Subscription-Key": SUBSCRIPTION_KEY,
+        "Ocp-Apim-Subscription-Region": LOCATION,
+        "Content-type": "application/json",
+        "X-ClientTraceId": str(uuid.uuid4()),
+    }
+    body = [{"text": text}]
+    request = requests.post(ENDPOINT, headers=headers, json=body)
+    response = request.json()
 
-        location_var_name = 'TRANSLATOR_TEXT_LOCATION'
-        if location_var_name not in os.environ:
-            raise Exception('Please set/export the environment variable: {}'.format(location_var_name))
-        location = os.environ[location_var_name]
-
-        path = '/detect?api-version=3.0'
-        self.constructed_url = endpoint + path
-
-        self.headers = {
-            'Ocp-Apim-Subscription-Key': subscription_key,
-            'Ocp-Apim-Subscription-Region': location,
-            'Content-type': 'application/json',
-            'X-ClientTraceId': str(uuid.uuid4())
-        }
-
-    def detect_language(self, text: str):
-        body = [{
-            'text': text
-        }]
-        request = requests.post(self.constructed_url, headers=self.headers, json=body)
-        response = request.json()
-
-        return [{
-            'language': response[0]["language"],
-            'score': response[0]["score"]
-        }]
+    return response[0]["language"]
