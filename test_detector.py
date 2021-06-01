@@ -1,7 +1,18 @@
-from detector import detect_language
+"""Detector Test
+
+This file tests the Detector Class.
+"""
+from detector import Detector
 
 
 def test_detect_language():
+    """
+    Test that the detected language is correct for the most spoken languages.
+
+    Calls `Decorator.detect_language()` on text of known language, and checks
+    that the detected language is correct.
+    """
+
     texts = [
         {
             "value":
@@ -54,5 +65,7 @@ def test_detect_language():
         },
     ]
 
+    detector = Detector()
+
     for text in texts:
-        assert detect_language(text["value"]) == text["language"]
+        assert detector.detect_language(text["value"]) == text["language"]
