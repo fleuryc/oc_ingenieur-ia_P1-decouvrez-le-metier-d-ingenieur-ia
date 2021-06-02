@@ -25,13 +25,26 @@ Rename `.env.example` into `.env` and set the parameters with the values provide
 
 ## Usage
 
-### CLI
+### CLI : Input text
 
-Run `detector-cli.py` to detect the language of the text passed as an argument.
+Run `python detector-cli.py --text TEXT` to detect the language of the text passed as an argument.
 
 ```bash
-$ python3 detector-cli.py "We are the knights who say 'Ni!'"
+$ python detector-cli.py --text "We are the knights who say 'Ni!'"
 > Detected language : en
+```
+
+### CLI : Random text from dataset
+
+Run `python detector-cli.py` to detect the language of a random line of text in one of the most spoken languages (en, zh, hi, es, ar and fr) from the dataset (`data/x_test.txt`).
+
+```bash
+$ python detector-cli.py
+> Text : عملية التقويم أي إذا كان هناك درجات للنشاط يحاسب عليها التلميذ في تقصيره وتفاعلة أداء ذلك إلى التحاق بالنشاط و الإمكانيات المتاحة أي إذا كان هناك توفير الأدوات والأنشطة وتوفرت الأماكن كان النشاط كثير و أخيراً التوجيه نحو الإنجاز بمعنى إذا قام المدير بتكريم أداء ذلك إلى تفعيل النشاط.
+>
+> Expected language : ar
+> Detected language : ar
+> Result: SUCCESS
 ```
 
 ### Test

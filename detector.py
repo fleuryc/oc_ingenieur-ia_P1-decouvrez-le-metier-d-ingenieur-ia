@@ -49,12 +49,6 @@ class Detector:
             Azure Translator service's location.
             Must be a valid location ("francecentral").
             Should be defined in .env file or as an environment variable.
-
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
         """
 
         env = environs.Env()
