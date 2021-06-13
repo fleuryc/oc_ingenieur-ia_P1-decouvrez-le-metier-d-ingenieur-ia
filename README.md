@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2378cec53a2c4de8aaeedb464367e709)](https://app.codacy.com/gh/fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia?utm_source=github.com&utm_medium=referral&utm_content=fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia&utm_campaign=Badge_Grade_Settings)
 [![Python application](https://github.com/fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia/actions/workflows/python-app.yml/badge.svg)](https://github.com/fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia/actions/workflows/python-app.yml) [![CodeQL](https://github.com/fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/fleuryc/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia/actions/workflows/codeql-analysis.yml)
 
 # Language Detector
