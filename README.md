@@ -6,6 +6,10 @@ Repository of OpenClassrooms' [AI Engineer path](https://openclassrooms.com/fr/p
 
 Goal : use MS Azure's [Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-detect) to detect the language of some text.
 
+
+Check the presentation for this project : [Language Detector - Module Polyglotte presentation](https://fleuryc.github.io/oc_ingenieur-ia_P1-decouvrez-le-metier-d-ingenieur-ia/index.html)
+
+
 ## Installation
 
 1. Install dependencies
